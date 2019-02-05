@@ -9,61 +9,44 @@ namespace Arena_Fighter
 {
     class Program
     {
-        static InfoGenerator infoGen = new InfoGenerator(DateTime.Now.Millisecond);
+        public static InfoGenerator infoGen = new InfoGenerator(DateTime.Now.Millisecond);
+
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Your name player: ");
-            
 
-            
+            Console.WriteLine("Your name player: ");
+
+
             List<Person> people = new List<Person>();
-            //people.ForEach(x => x.kick());
-            
-            
+            people.ForEach(x => x.kick());            
 
             bool stay = true;
-            int kvar;
+            int RemainingHealth;
             int Remaining;
 
 
-            do
-            {
-                string Player = Console.ReadLine();
-                Person me = new Person();
-                me.Print();
-                Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
-                people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
-                PrintList(people);
-                enemy.damage
-                me.damage
-                
-                int power = strength + infoGen.Next(1,6);
-                Remaining = strength - damage;
-                damage 
-                kvar = Remaining - health;
 
-                if (power > 0)
-                {
-                    Remaining = strength - damage;
-                    kvar = Remaining - health;
-                    Console.WriteLine("Your attack to enemy" + kvar);
-                    stay = false;
-                }
-                else
-                {
-                    Console.WriteLine("You won!!!");
-                    stay = false;
-                }
 
-            } while (stay);
+            string Player = Console.ReadLine();
+            Person me = new Person(Player);
+            me.Print();
 
-            
+
+            Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
+            people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
+                              //PrintList(people);
+                              //Console.WriteLine();
+            Console.Clear();
+            Battle battle = new Battle(me, enemy);
+            battle.StartBattle();
+
+
+
 
             Console.ReadKey();
         }
         static Person CreateRandomPerson()
-        {                      
+        {
             return new Person(
                 infoGen.NextFullName(),//random imya, Next doljen bit
                 infoGen.Next(1, 10),
@@ -77,8 +60,9 @@ namespace Arena_Fighter
                 Console.WriteLine(item);
             }
         }
-        
-        
+
+
+
 
     }
 }

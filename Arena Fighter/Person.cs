@@ -9,30 +9,34 @@ namespace Arena_Fighter
     class Person
     {
         public string Name { get; set; }
-        public int strength;
-        public int damage;
-        public int health;
-        
-         
+        public int strength { get; set; }
+        public int damage { get; set; }
+        public int health { get; set; }
+        private static Random r = new Random();//esli nechego pisat to on budet vsegda privat
+
+
 
         public Person(string Name, int strength, int damage, int health)
         {
             this.Name = Name;//esli pole i metod odinakovoe to nado pisat this
-            Random r = new Random();
-            this.strength = r.Next(1, 10);
-            this.damage = r.Next(1, 6);
-            this.health = r.Next(1, 10);
-            
+
+            this.strength = strength;
+            this.damage = damage;
+            this.health = health;           
+
         }
 
-        public Person()
+        public Person(string name)
         {
+            Name = name;
+            this.strength = r.Next(1, 10);
+            this.damage = r.Next(1, 10);
+            this.health = r.Next(1, 10);
         }
 
         public void Print()
         {
-            
-
+            Console.WriteLine("Name: "+ Name);
             Console.WriteLine("Strength: " + strength);
             Console.WriteLine("Damage: " + damage);
             Console.WriteLine("Health: " + health);
@@ -40,6 +44,7 @@ namespace Arena_Fighter
 
         public void kick()
         {
+           
             Console.WriteLine("Name: " + Name + " Strength: " + strength + " Damage: " + damage + " Health: " + health);
         }
 
