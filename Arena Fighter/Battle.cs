@@ -29,18 +29,18 @@ namespace Arena_Fighter
                 Round round = new Round(Me, Enemy);
                 if (Me.health < 0)
                 {
-                    Console.Clear();
-                    Console.WriteLine("Game Over");
-
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nGame Over");
+                    Console.ResetColor();
                 }
                 else if (Enemy.health <= 0)
                 {
-                    Console.WriteLine("You won!");
-
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nYou won!");
+                    Console.ResetColor();
                 }
-
+                
             }
-
         }
     }
 }

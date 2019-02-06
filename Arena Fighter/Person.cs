@@ -22,16 +22,18 @@ namespace Arena_Fighter
 
             this.strength = strength;
             this.damage = damage;
-            this.health = health;           
+            this.health = health;
+            
 
         }
 
-        public Person(string name)
+        public Person(string name)// eto ja toest me
         {
             Name = name;
             this.strength = r.Next(1, 10);
             this.damage = r.Next(1, 10);
             this.health = r.Next(1, 10);
+
         }
 
         public void Print()
@@ -42,11 +44,11 @@ namespace Arena_Fighter
             Console.WriteLine("Health: " + health);
         }
 
-        public void kick()
-        {
+        //public void kick()
+        //{
            
-            Console.WriteLine("Name: " + Name + " Strength: " + strength + " Damage: " + damage + " Health: " + health);
-        }
+        //    Console.WriteLine("Name: " + Name + " Strength: " + strength + " Damage: " + damage + " Health: " + health);
+        //}
 
         public override string ToString()//eto stroka pokazyvaet v liste + public void toje doljen bit
         {

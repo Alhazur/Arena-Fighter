@@ -19,36 +19,46 @@ namespace Arena_Fighter
             this.enemy = enemy;//pervoe s pole a vtoroe s skobok public
             this.me = me;
 
-            diceEnemy = Program.infoGen.Next(1, 6);
+            diceEnemy = Program.infoGen.Next(1, 6);//eto shkala ydachi ili slychaynih chisel idet iz main program
             diceMe = Program.infoGen.Next(1, 6);
+
+
 
             int powerMe = me.strength + diceMe;//powerMe eto = me.strength + Random
             int powerEnemy = enemy.strength + diceEnemy;
 
+
+
+            Console.WriteLine();
+            Console.WriteLine("Round");
+            Console.Write(me.Name + " " + powerMe + " (" + me.strength + "+" + diceMe + ") VS ");
+            Console.WriteLine(enemy.Name + " " + powerEnemy + " (" + enemy.strength + "+" + diceEnemy + ")");
+
             if (powerEnemy < powerMe)
             {
-                Console.WriteLine("Your attack to enemy: " + enemy.health);
                 enemy.health -= me.damage;//esli ya silnet - egojizn
 
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(me.Name + " attacks -->> " + enemy.Name + " takes " + me.damage + " damage.");
+                Console.ResetColor();
+                Console.WriteLine("Remaining health: " + me.Name + " (" + me.health + "), " + enemy.Name + " (" + enemy.health + ")");
             }
             else if (powerEnemy > powerMe)
             {
-                Console.WriteLine("Enemies attack to you: " + me.health);
                 me.health -= enemy.damage;//esli on silnet - egojizn
 
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(enemy.Name + " attacks-->> " + me.Name + " takes " + enemy.damage +" damage.");
+                Console.ResetColor();
+                Console.WriteLine("Remaining health: " + me.Name + " (" + me.health + "), " + enemy.Name + " (" + enemy.health + ")\n");
             }
             else
             {
-                Console.WriteLine("draw");//eto nechya
-
-
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("draw\n");//eto nechya
+                Console.ResetColor();
             }
 
-
-
-
         }
-
-
     }
 }

@@ -12,38 +12,40 @@ namespace Arena_Fighter
         public static InfoGenerator infoGen = new InfoGenerator(DateTime.Now.Millisecond);
 
         static void Main(string[] args)
-        {
-
-            Console.WriteLine("Your name player: ");
-
-
+        {                       
             List<Person> people = new List<Person>();
-            people.ForEach(x => x.kick());            
-
-            bool stay = true;
-            int RemainingHealth;
-            int Remaining;
-
-
-
-
+            
+            Console.WriteLine("Your name player: ");
             string Player = Console.ReadLine();
+
             Person me = new Person(Player);
-            me.Print();
-
-
             Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
-            people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
-                              //PrintList(people);
-                              //Console.WriteLine();
-            Console.Clear();
             Battle battle = new Battle(me, enemy);
-            battle.StartBattle();
 
 
 
 
-            Console.ReadKey();
+            me.Print();
+            Console.Clear();
+            people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
+
+            while (true)
+            {
+
+
+                battle.StartBattle();
+
+
+
+
+
+
+                Console.ReadLine();
+
+
+                Console.ReadKey();
+
+            }
         }
         static Person CreateRandomPerson()
         {
