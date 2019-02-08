@@ -12,40 +12,43 @@ namespace Arena_Fighter
         public static InfoGenerator infoGen = new InfoGenerator(DateTime.Now.Millisecond);
 
         static void Main(string[] args)
-        {                       
-            List<Person> people = new List<Person>();
-            
+        {
+            Boy();
+
+        }
+        static void Boy()
+        {
+            //List<Person> people = new List<Person>();
+            //people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
+
             Console.WriteLine("Your name player: ");
             string Player = Console.ReadLine();
 
-            Person me = new Person(Player);
-            Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
-            Battle battle = new Battle(me, enemy);
+            bool go = true;
 
+            Person Me = new Person(Player);
+                
 
-
-
-            me.Print();
-            Console.Clear();
-            people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
-
-            while (true)
+            do
             {
+                Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
+                Battle battle = new Battle(Me, enemy);
 
-
-                battle.StartBattle();
-
-
-
-
-
-
-                Console.ReadLine();
-
-
+                if (Me.health <= 0)
+                {
+                    go = false;
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.Clear();
+                    battle.StartBattle();
+                }
                 Console.ReadKey();
 
-            }
+            } while (go);
+
+
         }
         static Person CreateRandomPerson()
         {
@@ -55,9 +58,13 @@ namespace Arena_Fighter
                 infoGen.Next(1, 10),
                 infoGen.Next(1, 10));
         }
-        static void PrintList(List<Person> people)//vizozivaet List<Person>
+        public static void PrintList(Person Me)//vizozivaet List<Person>
         {
-            foreach (Person item in people)//pokazivaet iz Lista
+            Console.Clear();
+            Console.WriteLine("Final Statistics\n");
+            Console.WriteLine(Me);
+
+            foreach (string item in Me.BattleHistory)//pokazivaet iz Lista
             {
                 Console.WriteLine(item);
             }

@@ -29,31 +29,34 @@ namespace Arena_Fighter
 
 
 
-            Console.WriteLine();
-            Console.WriteLine("Round");
-            Console.Write(me.Name + " " + powerMe + " (" + me.strength + "+" + diceMe + ") VS ");
+
+            Console.ReadLine();
+            Console.Write("Round: " + me.Name + " " + powerMe + " (" + me.strength + "+" + diceMe + ") VS ");
             Console.WriteLine(enemy.Name + " " + powerEnemy + " (" + enemy.strength + "+" + diceEnemy + ")");
 
             if (powerEnemy < powerMe)
             {
-                enemy.health -= me.damage;//esli ya silnet - egojizn
 
+                enemy.health -= me.damage;//esli ya silnet - egojizn
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(me.Name + " attacks -->> " + enemy.Name + " takes " + me.damage + " damage.");
                 Console.ResetColor();
                 Console.WriteLine("Remaining health: " + me.Name + " (" + me.health + "), " + enemy.Name + " (" + enemy.health + ")");
+
             }
             else if (powerEnemy > powerMe)
             {
-                me.health -= enemy.damage;//esli on silnet - egojizn
 
+                me.health -= enemy.damage;//esli on silnet - egojizn
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(enemy.Name + " attacks-->> " + me.Name + " takes " + enemy.damage +" damage.");
+                Console.WriteLine(enemy.Name + " attacks-->> " + me.Name + " takes " + enemy.damage + " damage.");
                 Console.ResetColor();
                 Console.WriteLine("Remaining health: " + me.Name + " (" + me.health + "), " + enemy.Name + " (" + enemy.health + ")\n");
+
             }
             else
             {
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("draw\n");//eto nechya
                 Console.ResetColor();

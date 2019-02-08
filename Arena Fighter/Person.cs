@@ -12,6 +12,7 @@ namespace Arena_Fighter
         public int strength { get; set; }
         public int damage { get; set; }
         public int health { get; set; }
+        public List<string> BattleHistory;// history, nadosozda pole sperva ++1
         private static Random r = new Random();//esli nechego pisat to on budet vsegda privat
 
 
@@ -23,16 +24,17 @@ namespace Arena_Fighter
             this.strength = strength;
             this.damage = damage;
             this.health = health;
-            
 
         }
-
+        
+            
         public Person(string name)// eto ja toest me
         {
             Name = name;
             this.strength = r.Next(1, 10);
             this.damage = r.Next(1, 10);
             this.health = r.Next(1, 10);
+            BattleHistory = new List<string>();// potom sozdat peremenij i eto list ++2
 
         }
 
@@ -52,7 +54,7 @@ namespace Arena_Fighter
 
         public override string ToString()//eto stroka pokazyvaet v liste + public void toje doljen bit
         {
-            Console.WriteLine("\nOpponent");
+            
             return "Name: " + Name + "\nStrength: " + strength + "\nDamage: " + damage + "\nHealth: " + health;
         }
     }

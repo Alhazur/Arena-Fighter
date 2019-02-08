@@ -19,28 +19,46 @@ namespace Arena_Fighter
 
         public void StartBattle()
         {
-
             Me.Print();
+
+            //Console.WriteLine("What do you want to do?");
+            //Console.ReadKey();
+            
             Console.WriteLine("\n---VS---\n");
             Enemy.Print();
 
+
             while (Me.health > 0 && Enemy.health > 0)
             {
+                
                 Round round = new Round(Me, Enemy);
-                if (Me.health < 0)
+
+                if (Me.health <= 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nGame Over");
                     Console.ResetColor();
+                    
+                    string enemyLost = $"{Me.Name} was killed by {Enemy.Name}";//variable + nazvanie + itog np imena ++3
+                    Me.BattleHistory.Add(enemyLost);//me eto imya . nazvanie . add  (nazvanie variable)
+
+                    Program.PrintList(Me);
+
+
                 }
                 else if (Enemy.health <= 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nYou won!");
                     Console.ResetColor();
+
+                    string enemyLost = $"{Enemy.Name} was killed by {Me.Name}";
+                    Me.BattleHistory.Add(enemyLost);
+
+
                 }
-                
             }
         }
     }
 }
+
