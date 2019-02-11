@@ -21,23 +21,17 @@ namespace Arena_Fighter
 
             diceEnemy = Program.infoGen.Next(1, 6);//eto shkala ydachi ili slychaynih chisel idet iz main program
             diceMe = Program.infoGen.Next(1, 6);
-
-
-
+            
             int powerMe = me.strength + diceMe;//powerMe eto = me.strength + Random
             int powerEnemy = enemy.strength + diceEnemy;
-
-
-
-
+            
             Console.ReadLine();
             Console.Write("Round: " + me.Name + " " + powerMe + " (" + me.strength + "+" + diceMe + ") VS ");
             Console.WriteLine(enemy.Name + " " + powerEnemy + " (" + enemy.strength + "+" + diceEnemy + ")");
 
             if (powerEnemy < powerMe)
             {
-
-                enemy.health -= me.damage;//esli ya silnet - egojizn
+                enemy.health -= me.damage;//esli ya sil net - egojizn
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(me.Name + " attacks -->> " + enemy.Name + " takes " + me.damage + " damage.");
                 Console.ResetColor();
@@ -46,8 +40,7 @@ namespace Arena_Fighter
             }
             else if (powerEnemy > powerMe)
             {
-
-                me.health -= enemy.damage;//esli on silnet - egojizn
+                me.health -= enemy.damage;//esli on sil net - egojizn
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(enemy.Name + " attacks-->> " + me.Name + " takes " + enemy.damage + " damage.");
                 Console.ResetColor();
@@ -56,7 +49,6 @@ namespace Arena_Fighter
             }
             else
             {
-
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("draw\n");//eto nechya
                 Console.ResetColor();

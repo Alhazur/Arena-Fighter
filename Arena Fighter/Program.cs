@@ -13,6 +13,7 @@ namespace Arena_Fighter
 
         static void Main(string[] args)
         {
+            Console.WriteLine("---Arena Fighter---");
             Boy();
 
         }
@@ -22,33 +23,44 @@ namespace Arena_Fighter
             //people.Add(enemy);//a syda zapisat novoe nazvanie k list(enemy)
 
             Console.WriteLine("Your name player: ");
-            string Player = Console.ReadLine();
-
-            bool go = true;
-
+            string Player = Console.ReadLine();            
             Person Me = new Person(Player);
-                
-
+            bool keepAlive = true;
+            string yesNo;
+            //
             do
             {
-                Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
-                Battle battle = new Battle(Me, enemy);
-
-                if (Me.health <= 0)
+                Me.Print();
+                ////
+                if (Me.health > 0)//esli jizn menshe to on ne sprosit zanovo!
                 {
-                    go = false;
-                    Console.Clear();
+                    Console.WriteLine("\nWhat do you want to do?\nY - Hunt for an opponent\nN - Retire from fighting");
+                    yesNo = Console.ReadLine();
                 }
                 else
                 {
-                    Console.Clear();
-                    battle.StartBattle();
+                    yesNo = "no";//sam zavershit dejstvie
                 }
-                Console.ReadKey();
+                ////
 
-            } while (go);
+                if (yesNo.Equals("y"))//esli najat da to nachnet igru
+                {
+                    Person enemy = CreateRandomPerson();//static Person CreateRandomPerson() Klass nazvanie i novoe nazvanie dlya cheloveka!
+                    Battle battle = new Battle(Me, enemy);//vizov klassa 
+                    battle.StartBattle();//start klassa
 
+                }
+                else
+                {
+                    Console.WriteLine("\nYou have ended the violence by not fighting.\n");
+                    Console.ReadLine();
+                    PrintList(Me);
+                    Console.ReadKey();
+                    keepAlive = false;
+                }
 
+            } while (keepAlive);
+            //
         }
         static Person CreateRandomPerson()
         {
